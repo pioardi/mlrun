@@ -103,7 +103,7 @@ jobs:
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          cz bump
+          cz bump --yes
           git push
           git push --tags
           echo "✅ Tag $RELEASE_VERSION created and pushed successfully!"
@@ -177,19 +177,20 @@ jobs:
           else
             image_name="${{ matrix.image-name }}"
           fi
-          docker pull ghcr.io/mlrun/$image_name:$RC_TAG
+          docker_repo=${{ github.repository_owner }}
+          docker pull ghcr.io/$docker_repo/$image_name:$RC_TAG
 
           # Create new tag (original tag remains)
           echo "🏷️ Creating release tag..."
-          docker tag ghcr.io/mlrun/$image_name:$RC_TAG ghcr.io/mlrun/$image_name:$RELEASE_VERSION
+          docker tag ghcr.io/$docker_repo/$image_name:$RC_TAG ghcr.io/$docker_repo/$image_name:$RELEASE_VERSION
 
           # Push the new release tag
           echo "📤 Pushing release tag..."
-          docker push ghcr.io/mlrun/$image_name:$RELEASE_VERSION
+          docker push ghcr.io/$docker_repo/$image_name:$RELEASE_VERSION
 
           echo "✅ Both tags now exist:"
-          echo "   - RC: ghcr.io/mlrun/$image_name:$RC_TAG"
-          echo "   - Release: ghcr.io/mlrun/$image_name:$RELEASE_VERSION"
+          echo "   - RC: ghcr.io/$docker_repo/$image_name:$RC_TAG"
+          echo "   - Release: ghcr.io/$docker_repo/$image_name:$RELEASE_VERSION"
 
           # TODO add changelog generation here as needed
           #gh release create "$RELEASE_VERSION" --repo mlrun/mlrun --title "Release $RELEASE_VERSION" --notes "Automated release created by GitHub Actions"
