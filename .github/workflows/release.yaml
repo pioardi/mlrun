@@ -100,6 +100,8 @@ jobs:
           RELEASE_VERSION: ${{ needs.Extract-Version.outputs.release_version }}
         run: |
           echo "🏷️ Release version to tag: $RELEASE_VERSION"
+          git checkout release/$RELEASE_VERSION
+          echo "Switching to release branch"
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
