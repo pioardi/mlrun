@@ -124,7 +124,7 @@ jobs:
               cd .. && \
               rm -rf mlrun-upstream)" >> $GITHUB_OUTPUT
           fi
-          
+
           # NOTE: for now, always take the latest commit hash from the development branch
           # TODO: take from relevant branch [pr head branch]
           echo "ui_hash=$( \
@@ -149,16 +149,16 @@ jobs:
           echo "mlrun_version=$(echo ${{ steps.git_upstream_info.outputs.unstable_version_prefix }}+$mlrun_hash)" >> $GITHUB_OUTPUT
           echo "mlrun_ui_version=${{ steps.git_upstream_info.outputs.unstable_version_prefix }}-$ui_hash" >> $GITHUB_OUTPUT
           echo "mlrun_docker_tag=$(echo ${{ steps.git_upstream_info.outputs.unstable_version_prefix }}-$mlrun_hash)" >> $GITHUB_OUTPUT
-          
+
           export mlrun_version_specifier=$mlrun_hash
           if [ -n "$PR_NUMBER" ]; then
             mlrun_version_specifier="refs/pull/${PR_NUMBER}/merge"
           fi
           echo "mlrun_version_specifier=$mlrun_version_specifier" >> $GITHUB_OUTPUT
-          
+
           echo "mlrun_docker_registry=ghcr.io/" >> $GITHUB_OUTPUT
           echo "mlrun_docker_repo=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-          
+
           echo "mlrun_system_tests_clean_resources=$( \
             input_system_tests_clean_resources=$INPUT_CLEAN_RESOURCES_IN_TEARDOWN && \
             echo ${input_system_tests_clean_resources:-true})" >> $GITHUB_OUTPUT
@@ -198,7 +198,7 @@ jobs:
         "${GITHUB_WORKSPACE}/automation/scripts/github_workflow_free_space.sh"
 
     - name: Install uv
-      uses: astral-sh/setup-uv@eb1897b8dc4b5d5bfe39a428a8f2304605e0983c # 7.0.0
+      uses: astral-sh/setup-uv@b75a909f75acd358c2196fb9a5f1299a9a8868a4 # 6.7.0
       with:
         enable-cache: true
         cache-dependency-glob: "**/*requirements*.txt"
