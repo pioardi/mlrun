@@ -31,7 +31,7 @@ jobs:
       - name: Resolve Branch to Re-Build
         id: set-branch
         run: |
-          
+
           # take mlrun branches, find branches that are in format of 9.9.x (where 9 could by any number)
           # sort them - so latest version would be last
           # take last 2 elements (aka last 2 versions)
