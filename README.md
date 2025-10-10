@@ -171,4 +171,4 @@ MLRun includes the following major components:
 [**Alerts and notifications:**](https://docs.mlrun.org/en/stable/concepts/model-monitoring.html) Use alerts to identify and inform you of possible problem situations. Use notifications to report status on runs and pipelines.
 
 [**Feature Store:**](https://docs.mlrun.org/en/stable/feature-store/feature-store.html) automatically collects, prepares, catalogs, and serves production data features for development (offline) and real-time (online) deployment using minimal engineering effort.  
-Small change.
+Small change.  small change
