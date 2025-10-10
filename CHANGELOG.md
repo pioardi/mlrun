@@ -1,3 +1,9 @@
+## v1.14.2-rc.0 (2025-10-10)
+
+### Fix
+
+- Test fix for release procedure test
+
 ## v1.14.1 (2025-10-09)
 
 ## v1.14.0-rc.0 (2025-10-09)
