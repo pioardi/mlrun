@@ -101,6 +101,8 @@ jobs:
         run: |
           echo "🏷️ Release version to tag: $RELEASE_VERSION"
           # Configure git
+          branch_name=release/$RELEASE_VERSION
+          git checkout $branch_name
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           cz bump --yes
