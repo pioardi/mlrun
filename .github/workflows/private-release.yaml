@@ -35,7 +35,7 @@ on:
       artifactory_docker_repo:
         description: 'Artifactory docker repository name'
         required: false
-        default: 'mlrun-staging'
+        default: 'mlrun-staging/mlrun'
         type: string
       artifactory_pypi_repo:
         description: 'Artifactory PyPI repository name'
